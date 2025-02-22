@@ -11,4 +11,4 @@ ssh root@${IP} bash < ./scripts/configure-firewall.sh
 ssh root@${IP} bash < ./scripts/create-user.sh
 
 # Upgrade packages and reboot system.
-ssh root@${IP} bash < ./scripts/update-packages.sh
+ssh root@${IP} bash < ./scripts/upgrade-packages.sh
