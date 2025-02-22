@@ -5,4 +5,4 @@ set -euo pipefail
 source .env
 
 # Set up firewall
-ssh root@${IP} bash < firewall.sh
+ssh root@${IP} bash < ./scripts/configure-firewall.sh
