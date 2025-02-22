@@ -4,5 +4,5 @@ set -euo pipefail
 # Load environment variables
 source .env
 
-# Set up firewall
+# Configure ufw firewall
 ssh root@${IP} bash < ./scripts/configure-firewall.sh
