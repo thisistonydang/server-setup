@@ -33,3 +33,17 @@ bash setup.sh
 - It is assumed that the server is already set up for SSH connections. This is usually done via the hosting provider on server creation. See [SSH Key Creation](#ssh-key-creation) section below if you need to do this manually.
 - Scripts must be ran as the root user to avoid needing to enter a password for sudo.
 - Last tested on `Ubuntu 20.04.1 LTS`.
+
+## SSH Key Creation
+
+If you need to create a new SSH key pair, run the [ssh-keygen](https://www.ssh.com/academy/ssh/keygen) command:
+
+```sh
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "${your_email@example.com}"
+```
+
+Optionally, you can add the public key to the server manually if your hosting provider does not support adding SSH keys to the server during creation. Run the [ssh-copy-id](https://www.ssh.com/academy/ssh/copy-id) command:
+
+```sh
+ssh-copy-id -i ~/.ssh/id_ed25519.pub root@${YOUR_SERVER_IP}
+```
