@@ -4,13 +4,13 @@ Setting up and securing a new server for self-hosting web applications can be a 
 
 The scripts in this repo are intended to set up and secure a new Ubuntu server for self-hosting web applications. Running the `setup.sh` script from the repo's root will copy the server's configuration variables (defined in the `.env` file) to the server and run all the following setup scripts:
 
-- `configure-firewall.sh` - configures the `ufw` firewall to rate limit SSH connections and allow HTTP/HTTPS connections.
+- `configure-firewall.sh` - Configures the `ufw` firewall to rate limit SSH connections and allow HTTP/HTTPS connections.
 
-- `configure-ssh.sh` - disables password authentication and restarts the SSH service.
+- `configure-ssh.sh` - Disables password authentication and only allow connections via SSH keys.
 
-- `create-user.sh` - creates a new, non-root user with their own home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
+- `create-user.sh` - Creates a new, non-root user with their own home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
 
-- `upgrade-packages.sh` - upgrades all installed packages and reboots the server.
+- `upgrade-packages.sh` - Upgrades all installed packages and reboots the server.
 
 ## Usage
 
