@@ -10,6 +10,9 @@ rsync -avLP .env root@${IP}:/root
 # Configure ufw firewall.
 ssh root@${IP} bash < ./scripts/configure-firewall.sh
 
+# Configure SSH.
+ssh root@${IP} bash < ./scripts/configure-ssh.sh
+
 # Create non-root user with sudo privileges.
 ssh root@${IP} bash < ./scripts/create-user.sh
 
