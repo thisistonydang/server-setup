@@ -1,11 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "Setting up server..."
+echo ""
+
 # Load environment variables. Required so that the IP variable is available.
 source .env
 
 # Copy the .env file to the server so that it can be used by below scripts.
+echo "Copying .env file to server..."
 rsync -avLP .env root@${IP}:/root
+echo ""
 
 # Configure ufw firewall.
 ssh root@${IP} bash < ./scripts/configure-firewall.sh
