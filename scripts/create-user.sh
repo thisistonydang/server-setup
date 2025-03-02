@@ -12,4 +12,10 @@ else
     useradd --create-home --shell /bin/bash --groups sudo ${USERNAME}
     echo "User '${USERNAME}' created with sudo privileges."
 
+    # Set the password to expire immediately, forcing the user to create a new
+    # password on next login. Note: Only SSH key authentication will be allowed
+    # for connecting to the server, but the password is still required for sudo.
+    passwd --delete --expire ${USERNAME}
+    echo "User '${USERNAME}' will need to create a new password on first login."
+
 fi
