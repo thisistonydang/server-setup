@@ -27,5 +27,5 @@ bash setup.sh
 ## Notes
 
 - It is assumed that the server is already set up for SSH connections. This is usually done via the hosting provider on server creation.
-- Scripts must be ran as the root user.
+- Scripts must be ran as the root user to avoid needing to enter a password for sudo.
 - Last tested on `Ubuntu 20.04.1 LTS`.
