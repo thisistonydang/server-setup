@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "Configuring firewall..."
+
 # Rate limit SSH connections to prevent brute force attacks.
 ufw limit ssh
 
@@ -9,6 +11,8 @@ ufw allow http
 
 # Allow incoming connections on port 443 (HTTPS).
 ufw allow https
+
+echo ""
 
 # Enable the firewall. The --force flag prevents confirmation prompts.
 ufw --force enable
