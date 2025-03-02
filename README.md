@@ -6,7 +6,11 @@ Included scripts:
 
 - `configure-firewall.sh` - configures the `ufw` firewall to rate limit SSH connections and allow HTTP/HTTPS connections.
 
-- `create-user.sh` - creates a new, non-root user with sudo privileges. The username is taken from the `.env` file.
+- `configure-ssh.sh` - disables password authentication and restarts the SSH service.
+
+- `create-user.sh` - creates a new, non-root user with home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
+
+- `upgrade-packages.sh` - upgrades all installed packages and reboots the server.
 
 ## Usage
 
