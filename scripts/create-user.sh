@@ -18,4 +18,9 @@ else
     passwd --delete --expire ${USERNAME}
     echo "User '${USERNAME}' will need to create a new password on first login."
 
+    # Copy SSH key folder from root to new user to allow SSH access. The SSH
+    # folder contains the authorized_keys file, which contains the public key
+    # that should have been added via the hosting provider on server creation.
+    rsync --archive --chown=${USERNAME}:${USERNAME} /root/.ssh /home/${USERNAME}
+    echo "SSH public key copied from root to new user '${USERNAME}'."
 fi
