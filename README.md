@@ -1,6 +1,8 @@
 # Self-Hosted Server Setup
 
-This repo contains bash scripts for setting up a new Ubuntu server for self-hosting web applications. The scripts are idempotent and can be ran individually or all at once using the `setup.sh` script (recommended).
+Setting up and securing a new server for self-hosting web applications can be a daunting task. This repo contains bash scripts for automating the process!
+
+The scripts in this repo are intended to set up and secure a new Ubuntu server for self-hosting web applications. The scripts are idempotent and can be ran individually or all at once using the `setup.sh` script (recommended).
 
 Included scripts:
 
