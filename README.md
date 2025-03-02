@@ -47,3 +47,36 @@ Optionally, you can add the public key to the server manually if your hosting pr
 ```sh
 ssh-copy-id -i ~/.ssh/id_ed25519.pub root@${YOUR_SERVER_IP}
 ```
+
+# Using a Custom Name for SSH
+
+To connect to your server with a custom domain name, add an `A` record to your DNS records that points your custom domain to your server's IP address.
+
+For example, if your custom domain name is `example.com` and your server's IP address is `123.456.789.0`, you would add the following `A` record to your DNS records.
+
+| Type | Name        | Content       |
+| ---- | ----------- | ------------- |
+| A    | example.com | 123.456.789.0 |
+
+> **Note:** If your DNS records are on Cloudflare, turn off the `Proxied` option for the record.
+
+After DNS propagation, you can connect to your server using the custom domain:
+
+```sh
+ssh ${YOUR_USERNAME}@${example.com}
+```
+
+To further simplify the connection process, you can add the following to your `~/.ssh/config` file:
+
+```sh
+Host ${ANY_NAME_YOU_WANT}
+    HostName ${example.com}
+    User ${YOUR_USERNAME}
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+You can now connect using a custom name like this:
+
+```sh
+ssh ${ANY_NAME_YOU_WANT}
+```
