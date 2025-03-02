@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "Creating user..."
+
 # Load environment variables. Required so that the USERNAME variable is available.
 source .env
 
@@ -24,3 +26,5 @@ else
     rsync --archive --chown=${USERNAME}:${USERNAME} /root/.ssh /home/${USERNAME}
     echo "SSH public key copied from root to new user '${USERNAME}'."
 fi
+
+echo ""
