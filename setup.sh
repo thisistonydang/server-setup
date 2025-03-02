@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Load environment variables.
+# Load environment variables. Required so that the IP variable is available.
 source .env
 
 # Configure ufw firewall.
