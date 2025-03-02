@@ -12,8 +12,10 @@ echo "Copying .env file to server..."
 rsync -avLP .env root@${IP}:/root
 echo ""
 
-# Configure ufw firewall.
-ssh root@${IP} bash < ./scripts/configure-firewall.sh
+# Copy the setup scripts directory to the server.
+echo "Copying setup scripts to server..."
+rsync -avLP scripts root@${IP}:/root
+echo ""
 
 # Configure SSH.
 ssh root@${IP} bash < ./scripts/configure-ssh.sh
