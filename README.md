@@ -1,6 +1,6 @@
 # Server Setup
 
-This repo contains bash scripts for setting up a new Ubuntu server. The scripts can be ran individually or all at once using the `setup.sh` script (recommended).
+This repo contains bash scripts for setting up a new Ubuntu server. The scripts are idempotent and can be ran individually or all at once using the `setup.sh` script (recommended).
 
 Included scripts:
 
