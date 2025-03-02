@@ -2,9 +2,7 @@
 
 Setting up and securing a new server for self-hosting web applications can be a daunting task. This repo contains bash scripts for automating the process!
 
-The scripts in this repo are intended to set up and secure a new Ubuntu server for self-hosting web applications. The scripts are idempotent and can be ran individually or all at once using the `setup.sh` script (recommended).
-
-Included scripts:
+The scripts in this repo are intended to set up and secure a new Ubuntu server for self-hosting web applications. Running the `setup.sh` script from the repo's root will copy the server's configuration variables (defined in the `.env` file) to the server and run all the following setup scripts:
 
 - `configure-firewall.sh` - configures the `ufw` firewall to rate limit SSH connections and allow HTTP/HTTPS connections.
 
