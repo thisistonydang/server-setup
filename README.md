@@ -1,4 +1,4 @@
-# Self-Hosted Server Setup
+# Server Setup (for self-hosting web applications)
 
 Setting up and securing a new server for self-hosting web applications can be a daunting task. This repo contains bash scripts for automating the process!
 
