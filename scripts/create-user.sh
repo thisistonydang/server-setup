@@ -1,7 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# Load environment variables. Required so that the USERNAME variable is available.
+# Copy and load environment variables. Required so that the USERNAME variable is available.
+rsync -avLP .env root@${IP}:/root
 source .env
 
 # Only create a new user if one doesn't already exist.
