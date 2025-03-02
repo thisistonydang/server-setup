@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Setting up server..."
+echo "Running server setup scripts..."
 echo ""
 
 # Load environment variables. Required so that the IP variable is available.
