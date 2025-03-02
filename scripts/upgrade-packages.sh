@@ -10,4 +10,5 @@ apt-get update
 apt-get upgrade --yes
 
 # Reboot server. Some updates require a reboot to take effect.
+echo "Rebooting server...Goodbye!"
 reboot
