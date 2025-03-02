@@ -8,7 +8,7 @@ source .env
 if id "${USERNAME}" &>/dev/null; then
     echo "User '${USERNAME}' already exists."
 else
-    # Create a new user with sudo privileges.
+    # Create a new user with home directory, bash shell, and sudo privileges.
     useradd --create-home --shell /bin/bash --groups sudo ${USERNAME}
     echo "User '${USERNAME}' created with sudo privileges."
 
