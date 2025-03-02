@@ -12,16 +12,15 @@ echo "Copying .env file to server..."
 rsync -avLP .env root@${IP}:/root
 echo ""
 
-# Copy the setup scripts directory to the server.
+# Copy the setup scripts to the server.
 echo "Copying setup scripts to server..."
 rsync -avLP scripts root@${IP}:/root
 echo ""
 
-# Configure SSH.
-ssh root@${IP} bash < ./scripts/configure-ssh.sh
-
-# Create non-root user with sudo privileges.
-ssh root@${IP} bash < ./scripts/create-user.sh
-
-# Upgrade packages and reboot system.
-ssh root@${IP} bash < ./scripts/upgrade-packages.sh
+# Execute all setup scripts in a single SSH session
+ssh root@${IP} 'bash -s' << 'EOF'
+    bash /root/scripts/configure-firewall.sh
+    bash /root/scripts/configure-ssh.sh
+    bash /root/scripts/create-user.sh
+    bash /root/scripts/upgrade-packages.sh
+EOF
