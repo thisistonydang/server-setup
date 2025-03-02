@@ -8,7 +8,7 @@ Included scripts:
 
 - `configure-ssh.sh` - disables password authentication and restarts the SSH service.
 
-- `create-user.sh` - creates a new, non-root user with home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
+- `create-user.sh` - creates a new, non-root user with their own home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
 
 - `upgrade-packages.sh` - upgrades all installed packages and reboots the server.
 
