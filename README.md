@@ -38,6 +38,20 @@ ssh ${YOUR_USERNAME}@${YOUR_SERVER_IP}
 - Scripts must be ran as the root user to avoid needing to enter a password for sudo.
 - Last tested on `Ubuntu 20.04.1 LTS`.
 
+## Verification
+
+To verify that password authentication is disabled, you can try signing in without SSH keys.
+
+```sh
+ssh ${YOUR_USERNAME}@${YOUR_SERVER_IP} -o PubkeyAuthentication=no
+```
+
+You should see a message like this:
+
+```sh
+Permission denied (publickey).
+```
+
 ## SSH Key Creation
 
 If you need to create a new SSH key pair, run the [ssh-keygen](https://www.ssh.com/academy/ssh/keygen) command:
