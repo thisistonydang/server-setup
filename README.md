@@ -48,7 +48,7 @@ Optionally, you can add the public key to the server manually if your hosting pr
 ssh-copy-id -i ~/.ssh/id_ed25519.pub root@${YOUR_SERVER_IP}
 ```
 
-# Using a Custom Name for SSH
+## Using a Custom Name for SSH
 
 To connect to your server with a custom domain name, add an `A` record to your DNS records that points your custom domain to your server's IP address.
 
