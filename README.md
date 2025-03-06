@@ -26,7 +26,11 @@ cp .env.example .env
 bash setup.sh
 ```
 
-3. The server is now set up and ready to use!
+3. The server is set up and ready to use! You can connect to the server with:
+
+```sh
+ssh ${YOUR_USERNAME}@${YOUR_SERVER_IP}
+```
 
 ## Notes
 
