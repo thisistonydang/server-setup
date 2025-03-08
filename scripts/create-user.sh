@@ -8,10 +8,11 @@ source .env
 
 # Only create a new user if one doesn't already exist.
 if id "${USERNAME}" &>/dev/null; then
-    echo "User '${USERNAME}' already exists."
+    echo "User '${USERNAME}' already exists. 🚧"
+    echo ""
 else
-    # Create a new user with home directory, bash shell, and sudo privileges.
-    useradd --create-home --shell /bin/bash --groups sudo ${USERNAME}
+    # Create a new user with home directory, and sudo privileges.
+    useradd --create-home --groups sudo ${USERNAME}
     echo "User '${USERNAME}' created with sudo privileges."
 
     # Set the password to expire immediately, forcing the user to create a new
@@ -25,6 +26,8 @@ else
     # that should have been added via the hosting provider on server creation.
     rsync --archive --chown=${USERNAME}:${USERNAME} /root/.ssh /home/${USERNAME}
     echo "SSH public key copied from root to new user '${USERNAME}'."
+
+    echo "User '${USERNAME}' created. ✅"
+    echo ""
 fi
 
-echo ""
