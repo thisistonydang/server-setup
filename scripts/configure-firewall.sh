@@ -19,3 +19,6 @@ ufw --force enable
 
 # Display the firewall status in verbose mode to confirm the rules.
 ufw status verbose
+
+echo "Firewall configured. ✅"
+echo ""
