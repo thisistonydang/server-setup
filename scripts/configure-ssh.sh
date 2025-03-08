@@ -17,7 +17,7 @@ grep --quiet '^PasswordAuthentication no' /etc/ssh/sshd_config || echo 'Password
 
 # Verify PermitRootLogin setting is recognized by sshd (in case the setting was deprecated).
 if ! sshd -T | grep --quiet "^permitrootlogin\s\+" ; then
-    echo "Warning: PermitRootLogin setting not recognized by sshd"
+    echo "Warning: PermitRootLogin setting not recognized by sshd ❌"
     exit 1
 fi
 
@@ -30,10 +30,9 @@ grep --quiet '^PermitRootLogin prohibit-password' /etc/ssh/sshd_config || echo '
 # Restart SSH service.
 systemctl restart ssh
 
-echo "SSH configured!"
-
 # Verify settings were applied.
 sshd -T | grep --extended-regexp --ignore-case 'PasswordAuthentication|PermitRootLogin'
+echo "SSH configured! ✅"
 echo ""
 
 # Reference:
