@@ -5,7 +5,7 @@ echo "Configuring SSH..."
 
 # Verify PasswordAuthentication setting is recognized by sshd (in case the setting was deprecated).
 if ! sshd -T | grep --quiet "^passwordauthentication\s\+" ; then
-    echo "Warning: PasswordAuthentication setting not recognized by sshd"
+    echo "Warning: PasswordAuthentication setting not recognized by sshd ❌"
     exit 1
 fi
 
