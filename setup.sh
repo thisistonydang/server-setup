@@ -22,5 +22,7 @@ ssh root@${IP} 'bash -s' << 'EOF'
     bash /root/scripts/configure-firewall.sh
     bash /root/scripts/configure-ssh.sh
     bash /root/scripts/create-user.sh
+    bash /root/scripts/install-lazy-vim.sh
+    bash /root/scripts/install-zsh.sh
     bash /root/scripts/upgrade-packages.sh
 EOF
