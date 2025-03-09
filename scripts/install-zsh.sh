@@ -6,3 +6,8 @@ echo "Installing ZSH..."
 # Load environment variables. Required so that the USERNAME variable is available.
 source .env
 
+# Install ZSH if not already installed.
+if ! command -v zsh &> /dev/null; then
+    apt-get update
+    apt-get install --yes zsh
+fi
