@@ -11,3 +11,9 @@ if ! command -v zsh &> /dev/null; then
     apt-get update
     apt-get install --yes zsh
 fi
+
+# Change default shell to ZSH for user.
+chsh --shell $(which zsh) ${USERNAME}
+
+echo "Default shell set to ZSH for user '${USERNAME}'. ✅"
+echo ""
