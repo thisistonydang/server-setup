@@ -10,6 +10,8 @@ The scripts in this repo are intended to set up and secure a new Ubuntu server f
 
 - `create-user.sh` - Creates a new, non-root user with their own home directory, bash shell, and sudo privileges. The username is taken from the `.env` file.
 
+- `install-fail2ban.sh` - Installs and configures `fail2ban` to block brute force SSH attacks.
+
 - `install-lazy-vim.sh` - Installs the base LazyVim requirements and clones the starter configuration to the root and non-root user's home directories.
 
 - `install-zsh.sh` - Installs ZSH and sets it as the default shell for the non-root user.
