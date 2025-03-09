@@ -16,7 +16,7 @@ if [[ ! -d ~/.config/nvim ]]; then
 
     # Install bare LazyVim requirements.
     echo "Installing LazyVim requirements..."
-    apt-get install --yes neovim build-essential
+    apt-get install --yes neovim build-essential fd-find
     echo ""
 fi
 
