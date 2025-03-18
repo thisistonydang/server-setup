@@ -82,8 +82,6 @@ For example, if your custom domain name is `example.com` and your server's IP ad
 | ---- | ----------- | ------------- |
 | A    | example.com | 123.456.789.0 |
 
-> **Note:** If your DNS records are on Cloudflare, turn off the `Proxied` option for the record.
-
 After DNS propagation, you can connect to your server using the custom domain:
 
 ```sh
