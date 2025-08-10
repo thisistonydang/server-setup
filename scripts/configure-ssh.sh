@@ -3,6 +3,12 @@ set -euo pipefail
 
 echo "Configuring SSH..."
 
+# Generate SSH host keys if they don't exist
+if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
+    echo "Generating SSH host keys..."
+    ssh-keygen -A
+fi
+
 # Verify PasswordAuthentication setting is recognized by sshd (in case the setting was deprecated).
 if ! sshd -T | grep --quiet "^passwordauthentication\s\+" ; then
     echo "Warning: PasswordAuthentication setting not recognized by sshd ⚠️"
