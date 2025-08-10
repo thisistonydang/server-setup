@@ -14,7 +14,7 @@ The scripts in this repo are intended to set up and secure a new Ubuntu server f
 
 - `install-lazy-vim.sh` - Installs the base LazyVim requirements and clones the starter configuration to the root and non-root user's home directories.
 
-- `install-zsh.sh` - Installs ZSH and sets it as the default shell for the non-root user. Also copies the `.zshrc` and `.gitconfig` files from the [dotfiles repo](https://github.com/thisistonydang/dotfiles) to the non-root user's home directory. This is optional and can be customized by setting the `DOTFILES_REPO` variable in the `.env` file or skipped entirely by setting it to an empty string (e.g. `DOTFILES_REPO=""`).
+- `install-zsh.sh` - Installs ZSH and sets it as the default shell for the non-root user. Also copies the `.zshrc` and `.gitconfig` files from the [dotfiles](https://github.com/thisistonydang/dotfiles) repo to the non-root user's home directory. This is optional and can be customized by setting the `DOTFILES_REPO` variable in the `.env` file or skipped entirely by setting it to an empty string (e.g. `DOTFILES_REPO=""`).
 
 - `upgrade-packages.sh` - Upgrades all installed packages and reboots the server.
 
