@@ -33,7 +33,7 @@ fi
 if [[ ! -d /home/${USERNAME}/.config/nvim ]]; then
     git clone https://github.com/LazyVim/starter /home/${USERNAME}/.config/nvim
     rm -rf /home/${USERNAME}/.config/nvim/.git
-    chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/.config/nvim
+    chown --recursive ${USERNAME}:${USERNAME} /home/${USERNAME}/.config/nvim
     echo "LazyVim starter cloned for user '${USERNAME}'. ✅"
 else
     echo "LazyVim starter already cloned for user '${USERNAME}'. 🚧"
