@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "Installing ZSH..."
 
-# Load environment variables. Required so that the USERNAME variable is available.
+# Load environment variables. Required so that the USERNAME and DOTFILES_REPO variables are available.
 source .env
 
 # Install ZSH if not already installed.
