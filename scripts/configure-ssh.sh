@@ -10,7 +10,7 @@ if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
 fi
 
 # Verify PasswordAuthentication setting is recognized by sshd (in case the setting was deprecated).
-if ! sshd -T | grep --quiet "^passwordauthentication\s\+" ; then
+if ! sshd -T | grep "^passwordauthentication\s\+" > /dev/null ; then
     echo "Warning: PasswordAuthentication setting not recognized by sshd ⚠️"
     echo ""
     exit 1
@@ -23,7 +23,7 @@ sed --in-place 's/^#*\(PasswordAuthentication\) .*/\1 no/' /etc/ssh/sshd_config
 grep --quiet '^PasswordAuthentication no' /etc/ssh/sshd_config || echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 
 # Verify PermitRootLogin setting is recognized by sshd (in case the setting was deprecated).
-if ! sshd -T | grep --quiet "^permitrootlogin\s\+" ; then
+if ! sshd -T | grep "^permitrootlogin\s\+" > /dev/null ; then
     echo "Warning: PermitRootLogin setting not recognized by sshd ⚠️"
     echo ""
     exit 1
