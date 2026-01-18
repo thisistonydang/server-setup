@@ -16,3 +16,5 @@ find "${POSTGRES_LOCAL_BACKUP_DIR}" -type f -mtime +${MIN_AGE_IN_DAYS} -delete
 # Clean remote backups.
 rclone delete "${POSTGRES_REMOTE_BACKUP_DIR}" --min-age ${MIN_AGE_IN_DAYS}d
 
+echo "✅ Database backups cleaned up."
+echo ""
