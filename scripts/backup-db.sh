@@ -14,3 +14,12 @@ BACKUP_PATH="/root/db_backups/${FILENAME}"
 
 echo "Backing up database to: ${BACKUP_PATH}..."
 
+pg_dump \
+  --host="${POSTGRES_HOST}" \
+  --port="${POSTGRES_PORT}" \
+  --dbname="${POSTGRES_DB}" \
+  --username="${POSTGRES_USER}" \
+  --no-password \
+  --format=custom \
+  > "${BACKUP_PATH}"
+
