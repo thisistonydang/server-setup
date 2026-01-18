@@ -24,3 +24,4 @@ pg_dump \
   --format=custom \
   > "${BACKUP_PATH}"
 
+rclone copy "${BACKUP_PATH}" remote:db_backups
