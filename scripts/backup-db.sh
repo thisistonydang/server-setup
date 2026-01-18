@@ -3,6 +3,7 @@ set -euo pipefail
 
 # Load environment variables. Required so that the PostgreSQL related variables are available:
 # - POSTGRES_LOCAL_BACKUP_DIR
+# - POSTGRES_REMOTE_BACKUP_DIR
 # - POSTGRES_HOST
 # - POSTGRES_PORT
 # - POSTGRES_DB
@@ -25,7 +26,7 @@ pg_dump \
   --format=custom \
   > "${BACKUP_PATH}"
 
-rclone copy "${BACKUP_PATH}" remote:db_backups
+rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"
 
 echo "✅ Database backup completed and uploaded to Google Drive."
 echo ""
