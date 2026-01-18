@@ -8,3 +8,6 @@ set -euo pipefail
 # - POSTGRES_USER
 source .env
 
+DATE=$(date +%Y-%m-%d_%H-%M-%S)
+FILENAME="${DATE}.dump"
+BACKUP_PATH="/root/db_backups/${FILENAME}"
