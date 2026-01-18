@@ -28,5 +28,5 @@ pg_dump \
 
 rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"
 
-echo "✅ Database backup completed and uploaded to Google Drive."
+echo "✅ Database backup completed and uploaded to remote."
 echo ""
