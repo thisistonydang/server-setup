@@ -12,7 +12,7 @@ source .env
 # Generate filename for the backup.
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 FILENAME="${DATE}.dump"
-BACKUP_PATH="/root/db_backups/${FILENAME}"
+BACKUP_PATH="${POSTGRES_BACKUP_DIR}/${FILENAME}"
 
 echo "Backing up database to: ${BACKUP_PATH}..."
 
