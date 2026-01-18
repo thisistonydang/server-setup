@@ -25,3 +25,6 @@ pg_dump \
   > "${BACKUP_PATH}"
 
 rclone copy "${BACKUP_PATH}" remote:db_backups
+
+echo "✅ Database backup completed and uploaded to Google Drive."
+echo ""
