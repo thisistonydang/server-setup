@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # Load environment variables. Required so that the PostgreSQL related variables are available:
+# - POSTGRES_BACKUP_DIR
 # - POSTGRES_HOST
 # - POSTGRES_PORT
 # - POSTGRES_DB
