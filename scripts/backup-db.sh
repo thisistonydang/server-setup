@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Load environment variables. Required so that the PostgreSQL related variables are available:
-# - POSTGRES_BACKUP_DIR
+# - POSTGRES_LOCAL_BACKUP_DIR
 # - POSTGRES_HOST
 # - POSTGRES_PORT
 # - POSTGRES_DB
@@ -12,7 +12,7 @@ source .env
 # Generate filename for the backup.
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 FILENAME="${DATE}.dump"
-BACKUP_PATH="${POSTGRES_BACKUP_DIR}/${FILENAME}"
+BACKUP_PATH="${POSTGRES_LOCAL_BACKUP_DIR}/${FILENAME}"
 
 echo "Backing up database to: ${BACKUP_PATH}..."
 
