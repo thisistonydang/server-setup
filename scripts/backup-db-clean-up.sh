@@ -10,3 +10,5 @@ source .env
 
 MIN_AGE_IN_DAYS=30
 
+# Clean local backups.
+find "${POSTGRES_LOCAL_BACKUP_DIR}" -type f -mtime +${MIN_AGE_IN_DAYS} -delete
