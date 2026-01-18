@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Load environment variables. Required so that the PostgreSQL related variables are available:
+# Load environment variables. Required so that the required variables are available:
 # - POSTGRES_LOCAL_BACKUP_DIR
 # - POSTGRES_REMOTE_BACKUP_DIR
 # - POSTGRES_HOST
