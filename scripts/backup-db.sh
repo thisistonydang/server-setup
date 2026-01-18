@@ -8,6 +8,7 @@ set -euo pipefail
 # - POSTGRES_USER
 source .env
 
+# Generate filename for the backup.
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
 FILENAME="${DATE}.dump"
 BACKUP_PATH="/root/db_backups/${FILENAME}"
