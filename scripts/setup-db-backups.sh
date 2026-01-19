@@ -15,6 +15,7 @@ source .env
 
 # Set up db backups if psql client is not already installed and a local Postgres
 # backup directory is specified in the .env file.
+if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
 
 echo ""
 
