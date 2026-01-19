@@ -28,6 +28,10 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     # Set up password file for passwordless authentication when running pg_dump.
     echo "${POSTGRES_HOST}:${POSTGRES_PORT}:${POSTGRES_DB}:${POSTGRES_USER}:${POSTGRES_PASS}" > /root/.pgpass
     chmod 0600 /root/.pgpass
+    
+    # Install rclone to backup the database to a remote server.
+    curl https://rclone.org/install.sh | bash
+    
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
