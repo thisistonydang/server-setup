@@ -37,6 +37,8 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
 
     BACKUP_SCRIPT_PATH="/root/scripts/backup-db.sh"
     CLEANUP_SCRIPT_PATH="/root/scripts/backup-db-cleanup.sh"
+    CRON_SCHEDULE="0 2 * * *" # Run daily at 2 AM.
+
     # Ensure the backup and cleanup scripts are executable.
     chmod +x "${BACKUP_SCRIPT_PATH}"
     chmod +x "${CLEANUP_SCRIPT_PATH}"
