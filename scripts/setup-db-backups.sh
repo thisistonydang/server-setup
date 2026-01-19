@@ -16,6 +16,12 @@ source .env
 # Set up db backups if psql client is not already installed and a local Postgres
 # backup directory is specified in the .env file.
 if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
+    apt-get update
+
+    # Add PostgreSQL APT Repository.
+    apt-get install --yes postgresql-common
+    yes | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
