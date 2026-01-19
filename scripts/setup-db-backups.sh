@@ -25,6 +25,9 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     # Install psql client.
     apt-get install --yes postgresql-client-${POSTGRES_VERSION}
 
+    # Set up password file for passwordless authentication when running pg_dump.
+    echo "${POSTGRES_HOST}:${POSTGRES_PORT}:${POSTGRES_DB}:${POSTGRES_USER}:${POSTGRES_PASS}" > /root/.pgpass
+    chmod 0600 /root/.pgpass
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
