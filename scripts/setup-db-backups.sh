@@ -39,6 +39,8 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     chmod +x /root/scripts/backup-db.sh 
     chmod +x /root/scripts/backup-db-cleanup.sh
 
+    
+    echo "✅ Database backups set up for PostgreSQL."
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
