@@ -32,6 +32,9 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     # Install rclone to backup the database to a remote server.
     curl https://rclone.org/install.sh | bash
     
+    # Create the local backups directory.
+    mkdir -parents "${POSTGRES_LOCAL_BACKUP_DIR}"
+
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
