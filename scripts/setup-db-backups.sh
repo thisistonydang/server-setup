@@ -13,3 +13,5 @@ echo "Setting up database backups..."
 # - POSTGRES_PASS
 source .env
 
+# Set up db backups if psql client is not already installed and a local Postgres
+# backup directory is specified in the .env file.
