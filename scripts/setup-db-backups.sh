@@ -22,6 +22,9 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     apt-get install --yes postgresql-common
     yes | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 
+    # Install psql client.
+    apt-get install --yes postgresql-client-${POSTGRES_VERSION}
+
 else
     echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
