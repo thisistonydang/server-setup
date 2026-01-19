@@ -16,6 +16,8 @@ The scripts in this repo are intended to set up and secure a new Ubuntu server f
 
 - `install-zsh.sh` - Installs ZSH and sets it as the default shell for the non-root user. Also copies the `.zshrc` and `.gitconfig` files from the [dotfiles](https://github.com/thisistonydang/dotfiles) repo to the non-root user's home directory. This is optional and can be customized by setting the `DOTFILES_REPO` variable in the `.env` file or skipped entirely by setting it to an empty string (e.g. `DOTFILES_REPO=""`).
 
+- `setup-db-backups.sh` – Sets up automated database backups for PostgreSQL using [`rclone`](https://rclone.org/) to periodically save backups to a remote server. This is optional and can be enabled by setting all of the `POSTGRES_`-prefixed variables in the `.env` file, or skipped entirely by setting `POSTGRES_LOCAL_BACKUP_DIR` to an empty string (e.g., `POSTGRES_LOCAL_BACKUP_DIR=""`). For backups to work, it is assumed that (1) you have a local PostgreSQL instance running on your server at `127.0.0.1:5432`, and (2) you have an `rclone` remote configured for backups. Setting up the remote must be done manually by connecting to the server and running `rclone config` after the `setup.sh` script has completed successfully.
+
 - `upgrade-packages.sh` - Upgrades all installed packages and reboots the server.
 
 ## Usage
