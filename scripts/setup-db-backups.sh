@@ -38,8 +38,9 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     BACKUP_SCRIPT_PATH="/root/scripts/backup-db.sh"
     CLEANUP_SCRIPT_PATH="/root/scripts/backup-db-cleanup.sh"
     # Ensure the backup and cleanup scripts are executable.
-    chmod +x /root/scripts/backup-db.sh 
-    chmod +x /root/scripts/backup-db-cleanup.sh
+    chmod +x "${BACKUP_SCRIPT_PATH}"
+    chmod +x "${CLEANUP_SCRIPT_PATH}"
+
 
     
     echo "✅ Database backups set up for PostgreSQL."
