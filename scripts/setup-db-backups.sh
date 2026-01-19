@@ -44,6 +44,9 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     chmod +x "${CLEANUP_SCRIPT_PATH}"
 
 
+
+    # Display the status of the cron jobs.
+    crontab -l
     
     echo "✅ Database backups set up for PostgreSQL."
 else
