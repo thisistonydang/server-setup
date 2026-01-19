@@ -35,6 +35,8 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     # Create the local backups directory.
     mkdir -parents "${POSTGRES_LOCAL_BACKUP_DIR}"
 
+    BACKUP_SCRIPT_PATH="/root/scripts/backup-db.sh"
+    CLEANUP_SCRIPT_PATH="/root/scripts/backup-db-cleanup.sh"
     # Ensure the backup and cleanup scripts are executable.
     chmod +x /root/scripts/backup-db.sh 
     chmod +x /root/scripts/backup-db-cleanup.sh
