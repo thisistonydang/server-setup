@@ -15,7 +15,7 @@ MIN_AGE_IN_DAYS=30
 find "${POSTGRES_LOCAL_BACKUP_DIR}" -type f -name "*.dump" -mtime +${MIN_AGE_IN_DAYS} -delete
 
 # Clean remote backups.
-rclone delete "${POSTGRES_REMOTE_BACKUP_DIR}" --min-age ${MIN_AGE_IN_DAYS}d
+rclone delete "${POSTGRES_REMOTE_BACKUP_DIR}" --include "*.dump" --min-age ${MIN_AGE_IN_DAYS}d 
 
 echo "✅ Database backups cleaned up."
 echo ""
