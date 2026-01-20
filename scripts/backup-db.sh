@@ -27,7 +27,11 @@ pg_dump \
   --format=custom \
   --file="${BACKUP_PATH}"
 
-rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"
+if rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"; then
+  echo "✅ Database backup completed and uploaded to remote."
+else
+  echo "⚠️ pg_dump ran but rclone copy to remote failed!"
+  exit 1
+fi
 
-echo "✅ Database backup completed and uploaded to remote."
 echo ""
