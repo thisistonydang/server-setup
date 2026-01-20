@@ -4,7 +4,8 @@ set -euo pipefail
 echo "Installing ZSH..."
 
 # Load environment variables. Required so that the USERNAME and DOTFILES_REPO variables are available.
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/../.env"
 
 # Install ZSH if not already installed.
 if ! command -v zsh &> /dev/null; then
