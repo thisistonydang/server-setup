@@ -29,3 +29,8 @@ ssh root@${IP} 'bash -s' << 'EOF'
     bash /root/scripts/setup-db-backups.sh
     bash /root/scripts/upgrade-packages.sh
 EOF
+
+# Reboot server. Some updates require a reboot to take effect.
+echo "Rebooting server..."
+ssh root@${IP} 'reboot' || true
+echo "Setup complete! Server is rebooting...Goodbye!"
