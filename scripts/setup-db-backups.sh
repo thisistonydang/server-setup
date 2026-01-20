@@ -38,7 +38,6 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
 
     BACKUP_SCRIPT_PATH="/root/scripts/backup-db.sh"
     CLEANUP_SCRIPT_PATH="/root/scripts/backup-db-cleanup.sh"
-    CRON_SCHEDULE="0 2 * * *" # Run daily at 2 AM.
 
     # Ensure the backup and cleanup scripts are executable.
     chmod +x "${BACKUP_SCRIPT_PATH}"
@@ -48,14 +47,14 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     if crontab -l 2>/dev/null | grep --fixed-strings "${BACKUP_SCRIPT_PATH}" > /dev/null; then
         echo "🚧 Cron job for ${BACKUP_SCRIPT_PATH} already exists. Skipping."
     else
-        (crontab -l 2>/dev/null; echo "${CRON_SCHEDULE} ${BACKUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/backup.log 2>&1") | crontab -
+        (crontab -l 2>/dev/null; echo "0 1 * * * ${BACKUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/backup.log 2>&1") | crontab -
     fi
 
     # Add cron job for cleanup script if it doesn't already exist.
     if crontab -l 2>/dev/null | grep --fixed-strings "${CLEANUP_SCRIPT_PATH}" > /dev/null; then
         echo "🚧 Cron job for ${CLEANUP_SCRIPT_PATH} already exists. Skipping."
     else
-        (crontab -l 2>/dev/null; echo "${CRON_SCHEDULE} ${CLEANUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/cleanup.log 2>&1") | crontab -
+        (crontab -l 2>/dev/null; echo "0 2 * * * ${CLEANUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/cleanup.log 2>&1") | crontab -
     fi
 
     # Display the status of the cron jobs.
