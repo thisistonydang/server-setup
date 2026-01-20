@@ -25,7 +25,7 @@ pg_dump \
   --username="${POSTGRES_USER}" \
   --no-password \
   --format=custom \
-  > "${BACKUP_PATH}"
+  --file="${BACKUP_PATH}"
 
 rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"
 
