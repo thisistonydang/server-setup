@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/../.env"
 
 # Add LazyVim requirements if nvim is not already installed.
-if [[ ! -d ~/.config/nvim ]]; then
+if [[ ! -d /root/.config/nvim ]]; then
     # Add PPA to get the latest version of Neovim.
     echo "Adding PPA for latest stable Neovim..."
     add-apt-repository --yes ppa:neovim-ppa/stable
