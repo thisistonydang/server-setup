@@ -6,7 +6,8 @@ echo "Cleaning up old database backups..."
 # Load environment variables. Required so that the following variables are available:
 # - POSTGRES_LOCAL_BACKUP_DIR
 # - POSTGRES_REMOTE_BACKUP_DIR
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/../.env"
 
 MIN_AGE_IN_DAYS=30
 

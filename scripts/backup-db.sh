@@ -8,7 +8,8 @@ set -euo pipefail
 # - POSTGRES_PORT
 # - POSTGRES_DB
 # - POSTGRES_USER
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/../.env"
 
 # Generate filename for the backup.
 DATE=$(date +%Y-%m-%d_%H-%M-%S)
