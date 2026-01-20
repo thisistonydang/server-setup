@@ -11,7 +11,8 @@ echo "Setting up database backups..."
 # - POSTGRES_DB
 # - POSTGRES_USER
 # - POSTGRES_PASS
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/../.env"
 
 # Set up db backups if psql client is not already installed and a local Postgres
 # backup directory is specified in the .env file.
