@@ -26,5 +26,6 @@ ssh root@${IP} 'bash -s' << 'EOF'
     bash /root/scripts/install-fail2ban.sh
     bash /root/scripts/install-lazy-vim.sh
     bash /root/scripts/install-zsh.sh
+    bash /root/scripts/setup-db-backups.sh
     bash /root/scripts/upgrade-packages.sh
 EOF
