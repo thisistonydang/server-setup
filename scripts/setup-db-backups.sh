@@ -43,7 +43,19 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     chmod +x "${BACKUP_SCRIPT_PATH}"
     chmod +x "${CLEANUP_SCRIPT_PATH}"
 
+    # Add cron job for backup script if it doesn't already exist.
+    if crontab -l 2>/dev/null | grep -F "${BACKUP_SCRIPT_PATH}" > /dev/null; then
+        echo "🚧 Cron job for ${BACKUP_SCRIPT_PATH} already exists. Skipping."
+    else
+        (crontab -l 2>/dev/null; echo "${CRON_SCHEDULE} ${BACKUP_SCRIPT_PATH}") | crontab -
+    fi
 
+    # Add cron job for cleanup script if it doesn't already exist.
+    if crontab -l 2>/dev/null | grep -F "${CLEANUP_SCRIPT_PATH}" > /dev/null; then
+        echo "🚧 Cron job for ${CLEANUP_SCRIPT_PATH} already exists. Skipping."
+    else
+        (crontab -l 2>/dev/null; echo "${CRON_SCHEDULE} ${CLEANUP_SCRIPT_PATH}") | crontab -
+    fi
 
     # Display the status of the cron jobs.
     crontab -l
