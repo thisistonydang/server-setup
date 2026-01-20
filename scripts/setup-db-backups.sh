@@ -33,7 +33,7 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     curl https://rclone.org/install.sh | bash
     
     # Create the local backups directory.
-    mkdir -parents "${POSTGRES_LOCAL_BACKUP_DIR}"
+    mkdir --parents "${POSTGRES_LOCAL_BACKUP_DIR}"
 
     BACKUP_SCRIPT_PATH="/root/scripts/backup-db.sh"
     CLEANUP_SCRIPT_PATH="/root/scripts/backup-db-cleanup.sh"
