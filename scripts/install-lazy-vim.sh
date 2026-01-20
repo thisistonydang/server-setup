@@ -4,7 +4,8 @@ set -euo pipefail
 echo "Installing LazyVim..."
 
 # Load environment variables. Required so that the USERNAME variable is available.
-source .env
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/../.env"
 
 # Add LazyVim requirements if nvim is not already installed.
 if [[ ! -d ~/.config/nvim ]]; then
