@@ -22,7 +22,7 @@ if ! command -v zsh &> /dev/null; then
 fi
 
 # Change default shell to ZSH for user.
-chsh --shell $(which zsh) ${USERNAME}
+chsh --shell "$(which zsh)" "${USERNAME}"
 
 echo ""
 echo "Default shell set to ZSH for user '${USERNAME}'. ✅"
