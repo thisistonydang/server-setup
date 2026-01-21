@@ -11,7 +11,7 @@ fi
 
 # Verify PasswordAuthentication setting is recognized by sshd (in case the setting was deprecated).
 if ! sshd -T | grep "^passwordauthentication\s\+" > /dev/null ; then
-    echo "Warning: PasswordAuthentication setting not recognized by sshd ⚠️"
+    echo "⚠️ Warning: PasswordAuthentication setting not recognized by sshd"
     echo ""
     exit 1
 fi
@@ -24,7 +24,7 @@ grep --quiet '^PasswordAuthentication no' /etc/ssh/sshd_config || echo 'Password
 
 # Verify PermitRootLogin setting is recognized by sshd (in case the setting was deprecated).
 if ! sshd -T | grep "^permitrootlogin\s\+" > /dev/null ; then
-    echo "Warning: PermitRootLogin setting not recognized by sshd ⚠️"
+    echo "⚠️ Warning: PermitRootLogin setting not recognized by sshd"
     echo ""
     exit 1
 fi
@@ -40,7 +40,7 @@ systemctl restart ssh
 
 # Verify settings were applied.
 sshd -T | grep --extended-regexp --ignore-case 'PasswordAuthentication|PermitRootLogin'
-echo "SSH configured! ✅"
+echo "✅ SSH configured!"
 echo ""
 
 # Reference:
