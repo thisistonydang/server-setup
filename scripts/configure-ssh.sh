@@ -40,7 +40,7 @@ systemctl restart ssh
 
 # Verify settings were applied.
 sshd -T | grep --extended-regexp --ignore-case 'PasswordAuthentication|PermitRootLogin'
-echo "✅ SSH configured!"
+echo "✅ SSH configured."
 echo ""
 
 # Reference:
