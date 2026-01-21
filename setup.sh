@@ -5,6 +5,7 @@ echo "Running server setup scripts..."
 echo ""
 
 # Load environment variables. Required so that the IP variable is available.
+# shellcheck disable=SC1091
 source .env
 
 # Copy the .env file to the server so that it can be used by below scripts.
