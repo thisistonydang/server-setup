@@ -31,7 +31,7 @@ pg_dump \
 if rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"; then
   echo "✅ Database backup completed and uploaded to remote."
 else
-  echo "⚠️ pg_dump ran but rclone copy to remote failed!"
+  echo "‼️ Error: pg_dump ran but rclone copy to remote failed!"
   exit 1
 fi
 
