@@ -23,10 +23,10 @@ EOL
     fail2ban-client reload
     
     echo ""
-    echo "Fail2Ban installed. ✅"
+    echo "✅ Fail2Ban installed."
     echo ""
 else
-    echo "Fail2Ban is already installed. 🚧"
+    echo "⚠️ Warning: Fail2Ban is already installed."
     echo ""
 fi
 
