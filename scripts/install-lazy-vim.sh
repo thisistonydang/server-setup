@@ -5,6 +5,7 @@ echo "Installing LazyVim..."
 
 # Load environment variables. Required so that the USERNAME variable is available.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
 source "${SCRIPT_DIR}/../.env"
 
 # Add LazyVim requirements if nvim is not already installed.
