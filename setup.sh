@@ -9,16 +9,16 @@ source .env
 
 # Copy the .env file to the server so that it can be used by below scripts.
 echo "Copying .env file to server..."
-rsync -avLP .env root@${IP}:/root
+rsync -avLP .env "root@${IP}:/root"
 echo ""
 
 # Copy the setup scripts to the server.
 echo "Copying setup scripts to server..."
-rsync -avLP scripts root@${IP}:/root
+rsync -avLP scripts "root@${IP}:/root"
 echo ""
 
 # Execute all setup scripts in a single SSH session
-ssh root@${IP} 'bash -s' << 'EOF'
+ssh "root@${IP}" 'bash -s' << 'EOF'
     set -euo pipefail
     bash /root/scripts/configure-firewall.sh
     bash /root/scripts/configure-ssh.sh
@@ -31,5 +31,5 @@ ssh root@${IP} 'bash -s' << 'EOF'
 EOF
 
 # Reboot server. Some updates require a reboot to take effect.
-ssh root@${IP} 'reboot' || true
+ssh "root@${IP}" 'reboot' || true
 echo "Setup complete! Server is rebooting...Goodbye!"
