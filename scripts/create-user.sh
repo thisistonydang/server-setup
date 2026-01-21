@@ -10,7 +10,7 @@ source "${SCRIPT_DIR}/../.env"
 
 # Only create a new user if one doesn't already exist.
 if id "${USERNAME}" &>/dev/null; then
-    echo "⚠️ User '${USERNAME}' already exists."
+    echo "⚠️ Warning: User '${USERNAME}' already exists."
 else
     # Create a new user with home directory, and sudo privileges.
     useradd --create-home --groups sudo "${USERNAME}"
