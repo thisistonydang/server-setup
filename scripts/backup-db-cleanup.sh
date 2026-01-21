@@ -7,6 +7,7 @@ echo "Cleaning up old database backups..."
 # - POSTGRES_LOCAL_BACKUP_DIR
 # - POSTGRES_REMOTE_BACKUP_DIR
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
 source "${SCRIPT_DIR}/../.env"
 
 MIN_AGE_IN_DAYS=30
