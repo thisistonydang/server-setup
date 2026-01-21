@@ -33,4 +33,4 @@ EOF
 
 # Reboot server. Some updates require a reboot to take effect.
 ssh "root@${IP}" 'reboot' || true
-echo "Setup complete! Server is rebooting...Goodbye!"
+echo "✅ Setup complete! Server is rebooting...Goodbye!"
