@@ -5,6 +5,7 @@ echo "Installing ZSH..."
 
 # Load environment variables. Required so that the USERNAME and DOTFILES_REPO variables are available.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
 source "${SCRIPT_DIR}/../.env"
 
 # Install ZSH if not already installed.
@@ -13,10 +14,10 @@ if ! command -v zsh &> /dev/null; then
     apt-get install --yes zsh
 
     if [[ -n "${DOTFILES_REPO}" ]]; then
-        git clone --depth=1 https://github.com/${DOTFILES_REPO}.git /home/${USERNAME}/repos/${DOTFILES_REPO}
-        chown --recursive ${USERNAME}:${USERNAME} /home/${USERNAME}/repos/${DOTFILES_REPO}
-        ln --symbolic /home/${USERNAME}/repos/${DOTFILES_REPO}/.zshrc /home/${USERNAME}/.zshrc
-        ln --symbolic /home/${USERNAME}/repos/${DOTFILES_REPO}/.gitconfig /home/${USERNAME}/.gitconfig
+        git clone --depth=1 "https://github.com/${DOTFILES_REPO}.git" "/home/${USERNAME}/repos/${DOTFILES_REPO}"
+        chown --recursive "${USERNAME}:${USERNAME}" "/home/${USERNAME}/repos/${DOTFILES_REPO}"
+        ln --symbolic "/home/${USERNAME}/repos/${DOTFILES_REPO}/.zshrc" "/home/${USERNAME}/.zshrc"
+        ln --symbolic "/home/${USERNAME}/repos/${DOTFILES_REPO}/.gitconfig" "/home/${USERNAME}/.gitconfig"
     fi
 fi
 
