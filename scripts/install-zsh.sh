@@ -25,5 +25,5 @@ fi
 chsh --shell "$(which zsh)" "${USERNAME}"
 
 echo ""
-echo "Default shell set to ZSH for user '${USERNAME}'. ✅"
+echo "✅ Default shell set to ZSH for user '${USERNAME}'."
 echo ""
