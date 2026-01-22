@@ -31,7 +31,11 @@ if [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
     chmod 0600 /root/.pgpass
     
     # Install rclone to backup the database to a remote server.
-    curl -fsSL https://rclone.org/install.sh | bash
+    if ! command -v rclone &> /dev/null; then
+        curl -fsSL https://rclone.org/install.sh -o /tmp/rclone-install.sh
+        bash /tmp/rclone-install.sh
+        rm /tmp/rclone-install.sh
+    fi
     
     # Create the local backups directory.
     mkdir --parents "${POSTGRES_LOCAL_BACKUP_DIR}"
