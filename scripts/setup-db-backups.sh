@@ -59,7 +59,10 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     fi
 
     # Display the status of the cron jobs.
+    echo ""
+    echo "Cron jobs:"
     crontab -l
+    echo ""
     
     echo "✅ Database backups set up for PostgreSQL."
 else
