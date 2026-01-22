@@ -21,7 +21,7 @@ if [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
 
     # Add PostgreSQL APT Repository.
     apt-get install --yes postgresql-common
-    yes | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+    echo | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 
     # Install psql client.
     apt-get install --yes "postgresql-client-${POSTGRES_VERSION}"
