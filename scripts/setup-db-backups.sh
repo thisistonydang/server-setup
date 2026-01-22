@@ -15,9 +15,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/../.env"
 
-# Set up db backups if psql client is not already installed and a local Postgres
-# backup directory is specified in the .env file.
-if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
+# Set up db backups if POSTGRES_LOCAL_BACKUP_DIR is set in the .env file.
+if [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
     apt-get update
 
     # Add PostgreSQL APT Repository.
