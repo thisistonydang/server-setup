@@ -34,7 +34,7 @@ if [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
     if ! command -v rclone &> /dev/null; then
         curl -fsSL https://rclone.org/install.sh -o /tmp/rclone-install.sh
         bash /tmp/rclone-install.sh
-        rm /tmp/rclone-install.sh
+        rm --force /tmp/rclone-install.sh
     fi
     
     # Create the local backups directory.
