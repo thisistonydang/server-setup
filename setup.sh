@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Running server setup scripts..."
-echo ""
-
 # Load environment variables. Required so that the IP variable is available.
 # shellcheck disable=SC1091
 source .env
@@ -16,6 +13,9 @@ echo ""
 # Copy the setup scripts to the server.
 echo "Copying setup scripts to server..."
 rsync -avLP scripts "root@${IP}:/root"
+echo ""
+
+echo "Running server setup scripts..."
 echo ""
 
 # Execute all setup scripts in a single SSH session
