@@ -51,14 +51,18 @@ if [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; then
     if crontab -l 2>/dev/null | grep --fixed-strings "${BACKUP_SCRIPT_PATH}" > /dev/null; then
         echo "⚠️ Warning: Cron job for ${BACKUP_SCRIPT_PATH} already exists. Skipping."
     else
-        crontab <(crontab -l 2>/dev/null; echo "0 1 * * * ${BACKUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/backup.log 2>&1")
+        { crontab -l 2>/dev/null || true; echo "0 1 * * * ${BACKUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/backup.log 2>&1"; } > /tmp/new_crontab
+        crontab /tmp/new_crontab
+        rm --force /tmp/new_crontab
     fi
 
     # Add cron job for cleanup script if it doesn't already exist.
     if crontab -l 2>/dev/null | grep --fixed-strings "${CLEANUP_SCRIPT_PATH}" > /dev/null; then
         echo "⚠️ Warning: Cron job for ${CLEANUP_SCRIPT_PATH} already exists. Skipping."
     else
-        crontab <(crontab -l 2>/dev/null; echo "0 2 * * * ${CLEANUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/cleanup.log 2>&1")
+        { crontab -l 2>/dev/null || true; echo "0 2 * * * ${CLEANUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/cleanup.log 2>&1"; } > /tmp/new_crontab
+        crontab /tmp/new_crontab
+        rm --force /tmp/new_crontab
     fi
 
     # Display the status of the cron jobs.
