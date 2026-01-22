@@ -46,14 +46,14 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
 
     # Add cron job for backup script if it doesn't already exist.
     if crontab -l 2>/dev/null | grep --fixed-strings "${BACKUP_SCRIPT_PATH}" > /dev/null; then
-        echo "🚧 Cron job for ${BACKUP_SCRIPT_PATH} already exists. Skipping."
+        echo "⚠️ Warning: Cron job for ${BACKUP_SCRIPT_PATH} already exists. Skipping."
     else
         (crontab -l 2>/dev/null; echo "0 1 * * * ${BACKUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/backup.log 2>&1") | crontab -
     fi
 
     # Add cron job for cleanup script if it doesn't already exist.
     if crontab -l 2>/dev/null | grep --fixed-strings "${CLEANUP_SCRIPT_PATH}" > /dev/null; then
-        echo "🚧 Cron job for ${CLEANUP_SCRIPT_PATH} already exists. Skipping."
+        echo "⚠️ Warning: Cron job for ${CLEANUP_SCRIPT_PATH} already exists. Skipping."
     else
         (crontab -l 2>/dev/null; echo "0 2 * * * ${CLEANUP_SCRIPT_PATH} >> ${POSTGRES_LOCAL_BACKUP_DIR}/cleanup.log 2>&1") | crontab -
     fi
@@ -63,7 +63,7 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     
     echo "✅ Database backups set up for PostgreSQL."
 else
-    echo "🚧 Skipping database backups setup. psql client already installed or no backup directory specified."
+    echo "⚠️ Warning: Skipping database backups setup. psql client already installed or no backup directory specified."
 fi
 
 echo ""
