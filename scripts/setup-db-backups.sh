@@ -12,6 +12,7 @@ echo "Setting up database backups..."
 # - POSTGRES_USER
 # - POSTGRES_PASS
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
 source "${SCRIPT_DIR}/../.env"
 
 # Set up db backups if psql client is not already installed and a local Postgres
@@ -24,7 +25,7 @@ if ! command -v psql &> /dev/null && [[ -n "${POSTGRES_LOCAL_BACKUP_DIR}" ]]; th
     yes | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 
     # Install psql client.
-    apt-get install --yes postgresql-client-${POSTGRES_VERSION}
+    apt-get install --yes "postgresql-client-${POSTGRES_VERSION}"
 
     # Set up password file for passwordless authentication when running pg_dump.
     echo "${POSTGRES_HOST}:${POSTGRES_PORT}:${POSTGRES_DB}:${POSTGRES_USER}:${POSTGRES_PASS}" > /root/.pgpass
