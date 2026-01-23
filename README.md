@@ -16,7 +16,7 @@ The scripts in this repo are intended to set up and secure a new Ubuntu server f
 
 - `install-zsh.sh` - Installs ZSH and sets it as the default shell for the non-root user. Also copies the `.zshrc` and `.gitconfig` files from the [dotfiles](https://github.com/thisistonydang/dotfiles) repo to the non-root user's home directory. This is optional and can be customized by setting the `DOTFILES_REPO` variable in the `.env` file or skipped entirely by setting it to an empty string (e.g. `DOTFILES_REPO=""`).
 
-- `setup-db-backups.sh` – Sets up automated database backups for PostgreSQL using [`rclone`](https://rclone.org/) to periodically save backups to a remote server. This is optional and can be enabled by setting all of the `POSTGRES_`-prefixed variables in the `.env` file, or skipped entirely by setting `POSTGRES_LOCAL_BACKUP_DIR` to an empty string (e.g., `POSTGRES_LOCAL_BACKUP_DIR=""`). For backups to work, it is assumed that (1) you have a local PostgreSQL instance running on your server at `127.0.0.1:5432`, and (2) you have an `rclone` remote configured for backups. Setting up the remote must be done manually by connecting to the server and running `rclone config` after the `setup.sh` script has completed successfully.
+- `setup-db-backups.sh` – Sets up automated database backups for PostgreSQL using [`rclone`](https://rclone.org/) to periodically save backups to a remote server. This is optional and can be enabled by setting all of the `POSTGRES_`-prefixed variables in the `.env` file, or skipped entirely by setting `POSTGRES_LOCAL_BACKUP_DIR` to an empty string (e.g., `POSTGRES_LOCAL_BACKUP_DIR=""`). For backups to work, it is assumed that (1) you have a local PostgreSQL instance running on your server at `127.0.0.1:5432`, and (2) you have an `rclone` remote configured for backups. Setting up the remote must be done manually by connecting to the server and running `rclone config` after the `setup.sh` script has completed successfully. See the [Configuring `rclone`](#configuring-rclone) section below for more details.
 
 - `upgrade-packages.sh` - Upgrades all installed packages.
 
@@ -104,3 +104,23 @@ You can now connect using a custom name like this:
 ```sh
 ssh ${ANY_NAME_YOU_WANT}
 ```
+
+## Configuring `rclone`
+
+To configure `rclone`, after the `setup.sh` script has completed successfully, first connect to your server via SSH:
+
+```sh
+ssh ${YOUR_USERNAME}@${YOUR_SERVER_IP}
+```
+
+Then, run the following command to start an interactive configuration session:
+
+```sh
+rclone config
+```
+
+### Notes for Google Drive users
+
+- Be sure to create your own `client_id` and `client_secret` for the Google Drive API. See: https://rclone.org/drive/#making-your-own-client-id
+- When prompted for scope, select option 1 (`Full access all files, excluding Application Data Folder`).
+- If running on a headless server, you will need to authenticate on machine with a web browser. See: https://rclone.org/remote_setup/
