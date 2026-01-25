@@ -19,7 +19,7 @@ echo "Running server setup scripts..."
 echo ""
 
 # Execute all setup scripts in a single SSH session
-ssh "root@${IP}" 'bash -s' << 'EOF'
+ssh "root@${IP}" 'bash -s' <<'EOF'
     set -euo pipefail
     bash /root/scripts/configure-firewall.sh
     bash /root/scripts/configure-ssh.sh

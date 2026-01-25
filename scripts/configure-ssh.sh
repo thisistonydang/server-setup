@@ -5,35 +5,35 @@ echo "Configuring SSH..."
 
 # Generate SSH host keys if they don't exist
 if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
-    echo "Generating SSH host keys..."
-    ssh-keygen -A
+	echo "Generating SSH host keys..."
+	ssh-keygen -A
 fi
 
 # Verify PasswordAuthentication setting is recognized by sshd (in case the setting was deprecated).
-if ! sshd -T | grep "^passwordauthentication\s\+" > /dev/null ; then
-    echo "‼️ Error: PasswordAuthentication setting not recognized by sshd"
-    echo ""
-    exit 1
+if ! sshd -T | grep "^passwordauthentication\s\+" >/dev/null; then
+	echo "‼️ Error: PasswordAuthentication setting not recognized by sshd"
+	echo ""
+	exit 1
 fi
 
-# Change PasswordAuthentication setting to `no` if it exists. 
+# Change PasswordAuthentication setting to `no` if it exists.
 sed --in-place 's/^#*\(PasswordAuthentication\) .*/\1 no/' /etc/ssh/sshd_config
 
 # If PasswordAuthentication setting doesn't exist yet, add it to the file.
-grep --quiet '^PasswordAuthentication no' /etc/ssh/sshd_config || echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
+grep --quiet '^PasswordAuthentication no' /etc/ssh/sshd_config || echo 'PasswordAuthentication no' >>/etc/ssh/sshd_config
 
 # Verify PermitRootLogin setting is recognized by sshd (in case the setting was deprecated).
-if ! sshd -T | grep "^permitrootlogin\s\+" > /dev/null ; then
-    echo "‼️ Error: PermitRootLogin setting not recognized by sshd"
-    echo ""
-    exit 1
+if ! sshd -T | grep "^permitrootlogin\s\+" >/dev/null; then
+	echo "‼️ Error: PermitRootLogin setting not recognized by sshd"
+	echo ""
+	exit 1
 fi
 
 # Change PermitRootLogin setting to prohibit-password if it exists.
 sed --in-place 's/^#*\(PermitRootLogin\) .*/\1 prohibit-password/' /etc/ssh/sshd_config
 
 # If PermitRootLogin setting doesn't exist yet, add it to the file.
-grep --quiet '^PermitRootLogin prohibit-password' /etc/ssh/sshd_config || echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
+grep --quiet '^PermitRootLogin prohibit-password' /etc/ssh/sshd_config || echo 'PermitRootLogin prohibit-password' >>/etc/ssh/sshd_config
 
 # Restart SSH service.
 systemctl restart ssh

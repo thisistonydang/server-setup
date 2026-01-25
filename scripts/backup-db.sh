@@ -20,19 +20,19 @@ BACKUP_PATH="${POSTGRES_LOCAL_BACKUP_DIR}/${FILENAME}"
 echo "Backing up database to: ${BACKUP_PATH}..."
 
 pg_dump \
-  --host="${POSTGRES_HOST}" \
-  --port="${POSTGRES_PORT}" \
-  --dbname="${POSTGRES_DB}" \
-  --username="${POSTGRES_USER}" \
-  --no-password \
-  --format=custom \
-  --file="${BACKUP_PATH}"
+	--host="${POSTGRES_HOST}" \
+	--port="${POSTGRES_PORT}" \
+	--dbname="${POSTGRES_DB}" \
+	--username="${POSTGRES_USER}" \
+	--no-password \
+	--format=custom \
+	--file="${BACKUP_PATH}"
 
 if rclone copy "${BACKUP_PATH}" "${POSTGRES_REMOTE_BACKUP_DIR}"; then
-  echo "✅ Database backup completed and uploaded to remote."
+	echo "✅ Database backup completed and uploaded to remote."
 else
-  echo "‼️ Error: pg_dump ran but rclone copy to remote failed!"
-  exit 1
+	echo "‼️ Error: pg_dump ran but rclone copy to remote failed!"
+	exit 1
 fi
 
 echo ""

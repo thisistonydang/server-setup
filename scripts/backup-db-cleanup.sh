@@ -15,7 +15,7 @@ source "${SCRIPT_DIR}/../.env"
 find "${POSTGRES_LOCAL_BACKUP_DIR}" -type f -name "*.dump" -mtime "+${POSTGRES_MIN_AGE_IN_DAYS}" -delete
 
 # Clean remote backups.
-rclone delete "${POSTGRES_REMOTE_BACKUP_DIR}" --include "*.dump" --min-age "${POSTGRES_MIN_AGE_IN_DAYS}d" 
+rclone delete "${POSTGRES_REMOTE_BACKUP_DIR}" --include "*.dump" --min-age "${POSTGRES_MIN_AGE_IN_DAYS}d"
 
 echo "✅ Database backups cleaned up."
 echo ""
