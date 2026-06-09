@@ -16,10 +16,17 @@ else
 	useradd --create-home --groups sudo "${USERNAME}"
 	echo "User '${USERNAME}' created with sudo privileges."
 
-	# Set the password to expire immediately, forcing the user to create a new
-	# password on next login. Note: Only SSH key authentication will be allowed
-	# for connecting to the server, but the password is still required for sudo.
-	passwd --delete --expire "${USERNAME}"
+	# Set a strong random password (which is never revealed) and then expire it,
+	# forcing the user to create a new password on next login. We avoid
+	# `passwd --delete` because it leaves a blank password, which some PAM/sudo
+	# configurations will accept, allowing a sudo-capable account to be used
+	# without a real credential during the pre-first-login window. Note: Only SSH
+	# key authentication is allowed for connecting to the server, but the password
+	# is still required for sudo.
+	RANDOM_PASSWORD="$(head --bytes=32 /dev/urandom | base64)"
+	echo "${USERNAME}:${RANDOM_PASSWORD}" | chpasswd
+	unset RANDOM_PASSWORD
+	passwd --expire "${USERNAME}"
 	echo "User '${USERNAME}' will need to create a new password on first login."
 
 	# Copy SSH key folder from root to new user to allow SSH access. The SSH
